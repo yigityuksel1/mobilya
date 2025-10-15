@@ -1,19 +1,25 @@
+import { Link } from 'react-router-dom';
 import { useHealth } from './hooks/useHealth';
 
 export default function App() {
   const { data, isLoading, error } = useHealth();
-  if (isLoading) return <div>Yükleniyor...</div>;
-  if (error) return <div>Hata: {(error as Error).message}</div>;
-  return <pre>{JSON.stringify(data, null, 2)}</pre>;
-}
 
-import HealthCheck from './components/HealthCheck';
-
-export default function App() {
   return (
-    <div>
-      <h1>Frontend</h1>
-      <HealthCheck />
+    <div style={{ padding: 16 }}>
+      <nav style={{ marginBottom: 16 }}>
+        <Link to="/">Anasayfa</Link>{' '}|{' '}
+        <Link to="/login">Giriş</Link>
+      </nav>
+
+      <h1>Duman Mobilya</h1>
+
+      {isLoading && <div>Yükleniyor...</div>}
+      {error && <div style={{ color: 'red' }}>Hata: {(error as Error).message}</div>}
+      {data && (
+        <pre style={{ textAlign: 'left' }}>
+          {JSON.stringify(data, null, 2)}
+        </pre>
+      )}
     </div>
   );
 }
