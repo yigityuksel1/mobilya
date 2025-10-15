@@ -1,5 +1,7 @@
+console.log('Login render edildi');
 import { useState } from 'react';
 import { api } from '../lib/api';
+
 
 export default function Login() {
   const [email, setEmail] = useState('');
