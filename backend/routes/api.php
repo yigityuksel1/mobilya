@@ -35,8 +35,6 @@ Route::get('/products/{slug}', [ProductController::class, 'show']);
 Route::get('/health', function () {
     return response()->json([
         'status' => 'ok',
-        'app' => config('app.name'),
-        'env' => config('app.env'),
         'time' => now()->toISOString(),
     ]);
 });
